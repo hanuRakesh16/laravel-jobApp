@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\ListingController;
 use App\Models\Listing;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,9 @@ Route::get('/listings/{listing}', [ListingController::class, 'show']);
 Route::put('/listings/{listing}', [ListingController::class, 'update']);
 // delete listing
 Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
-
-
 // edit listing
 Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+// register form
+Route::get('/register', [UserController::class, 'create']);
+// create new user
+Route::post('/users', [UserController::class, 'store']);
